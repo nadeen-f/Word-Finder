@@ -5,4 +5,4 @@ A web application that finds all the possible words that can be created from the
 ###
 
 # Resources
-HTML, CSS, & JS Tutorial [https://www.w3schools.com/html/default.asp]
+[HTML, CSS, & JS References](https://www.w3schools.com/html/default.asp)
