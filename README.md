@@ -1,8 +1,8 @@
 # Word-Finder
 
-A web application that finds all the possible words that can be created from the characters provided by the user, with an advanced search option to search through more specific results, as well as child safety filtering options.
+A web application that finds all the possible 3-10 letter words that can be created from the characters provided by the user. The front-end is implemented with HTML and CSS, while the backend is implemented with Python.
 
 ###
 
-# Resources
+# Resources Used
 [HTML, CSS, & JS References](https://www.w3schools.com/html/default.asp)
