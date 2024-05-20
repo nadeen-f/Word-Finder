@@ -1,4 +1,4 @@
-# Returns an array of length 26 where each element is the number of letters 
+# Returns an array of length 26 where each element is the number of letters
 #   in word that correspond to the index
 # ie alpha_letters[0] = 2 means that the word contains 2 of the letter 'a'
 def count_letters (word): 
@@ -24,7 +24,26 @@ def check_valid_words(letters):
     for word in dictionary.keys():
         if (compare_letters(usr_letters, dictionary.get(word))):
             valid_words.append(word)
-    return valid_words
+    return sorted(valid_words, key=len)
+
+# filters the word_list to only include words of length word_len 
+def make_word_array (letters):
+    word_list = check_valid_words(letters.lower())
+    word_array = list()
+    for n in range(3, 11):
+        n_letter_words = filter_words(word_list, n)
+        if (n_letter_words):
+            word_array.append(n_letter_words)
+    return word_array
+
+    
+
+def filter_words(word_list, word_len):
+    len_letter_words = list()
+    for word in word_list:
+        if (len(word) == word_len):
+            len_letter_words.append(word)
+    return len_letter_words
 
 f = open("words.txt")
 word_list = f.read().split()
