@@ -3,8 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
     <title>Word Finder</title>
 </head>
+    
 <body>
     <div class="Navigation">
     </div>
@@ -20,9 +23,12 @@
             <input type="submit" value="Find Words">
         </form>
     </div>
+    
     <div class="words-container">
         {% for n_letter_words in words_array %}
         <div class="words"> 
+            {% set length = n_letter_words[0] | length %}
+            <h4> {{ length }} Letter Words </h4>
             <ul>
                 {% for word in n_letter_words %}
                 <li> {{ word }}  </li>
@@ -30,6 +36,21 @@
             </ul>
         </div> 
         {% endfor %}
+
+        {% if show_button %}
+        <button id="clear_results" type="button" onclick="clearResults()">
+            new search </button>
+        {% endif %}
     </div>
+
+    <footer>
+        <a href="https://github.com/nadeen-f/Word-Finder">
+            <div id="links">
+                <img id="logo" alt="GitHub Logo" src="{{ url_for('static', filename='github.png') }}">
+                <p> GitHub </p>
+            </div>
+        </a>
+    </footer>
 </body>
+    
 </html>
