@@ -16,4 +16,5 @@ def generate_words (letters):
     words_array = make_word_array(letters.lower())
     return render_template('index.html', 
                            words_array = words_array,
-                           letters = letters)
+                           letters = letters
+                           show_button = True)
