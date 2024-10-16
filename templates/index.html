@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
     <title>Word Finder</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
 </head>
-    
-<body>
-    <div class="Navigation">
-    </div>
 
-    <div class="Intro"> 
+<body>
+    <div class="Intro">
         <h1 class="Title"> Word Finder </h1>
-        <p class="Description"> Enter up to 10 letters, and click "Find Words" for an instant list of all the words you can create!</p>   
+        <p class="Description"> Enter at least 3 letters, and click "Go" for
+            an instant list of all the words you can create!</p>
     </div>
 
     <div class="search-field">
-        <form action="word_list" method="POST">
-            <input type="text" placeholder="abcde..." value="{{ letters }}" name="letter_field" maxlength="10" required>
-            <input type="submit" value="Find Words">
+        <form name="myForm" action="word_list" autocomplete="off" spellcheck="false" method="POST">
+            <input type="search" placeholder="abcde..." value="{{ letters }}" pattern="[A-Za-z]+" minlength="3"
+                name="letter_field" required>
+            <input type="submit" value="Go" name="">
         </form>
     </div>
-    
+
     <div class="words-container">
         {% for n_letter_words in words_array %}
-        <div class="words"> 
+        <div class="words">
             {% set length = n_letter_words[0] | length %}
             <h4> {{ length }} Letter Words </h4>
             <ul>
                 {% for word in n_letter_words %}
-                <li> {{ word }}  </li>
+                <li> {{ word }} </li>
                 {% endfor %}
             </ul>
-        </div> 
+        </div>
         {% endfor %}
 
         {% if show_button %}
         <button id="clear_results" type="button" onclick="clearResults()">
-            new search </button>
+            new search 
+        </button>
         {% endif %}
     </div>
 
@@ -52,5 +53,5 @@
         </a>
     </footer>
 </body>
-    
+
 </html>
